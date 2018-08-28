@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import AnimalDetail from './animal/AnimalDetail'
@@ -11,10 +11,12 @@ import EmployeeList from './employee/EmployeeList'
 import EmployeeDetail from './employee/EmployeeDetail'
 import OwnerList from './owners/OwnerList'
 import OwnerDetail from './owners/OwnerDetail'
+import Login from './login/Login'
 import "./nav/NavBar.css"
 import "./animal/Animal.css"
 
 export default class ApplicationViews extends Component {
+    isAuthenticated = () => localStorage.getItem("credentials") !== null
     state = {
         locations: [],
         animals: [],
@@ -41,10 +43,10 @@ export default class ApplicationViews extends Component {
 
     }
     addAnimal = animal => AnimalManager.post(animal)
-    .then(() => AnimalManager.getAll())
-    .then(animals => this.setState({
-        animals: animals
-    }))
+        .then(() => AnimalManager.getAll())
+        .then(animals => this.setState({
+            animals: animals
+        }))
 
     deleteAnimal = id => {
         return fetch(`http://localhost:5002/animals/${id}`, {
@@ -59,10 +61,10 @@ export default class ApplicationViews extends Component {
     }
 
     addEmployee = employee => EmployeeManager.post(employee)
-    .then(() => EmployeeManager.getAll())
-    .then(employees => this.setState({
-        employees: employees
-    }))
+        .then(() => EmployeeManager.getAll())
+        .then(employees => this.setState({
+            employees: employees
+        }))
     deleteEmployee = id => {
         return fetch(`http://localhost:5002/employees/${id}`, {
             method: "DELETE"
@@ -91,22 +93,27 @@ export default class ApplicationViews extends Component {
             <div className="stylenavbar">
 
                 <React.Fragment>
-
+                    <Route path="/login" component={Login} />
                     <Route exact path="/" render={(props) => {
                         return <LocationList locations={this.state.locations} />
                     }} />
                     {/*<Route exact path="/animals" render={(props) => {
                         return <AnimalList animals={this.state.animals} />*/
                     }
-                    <Route exact path="/employees" render={(props) => {
-                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    <Route exact path="/employees" render={props => {
+                        if (this.isAuthenticated()) {
+                            return <EmployeeList deleteEmployee={this.deleteEmployee}
+                                employees={this.state.employees} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
                     }} />
                     <Route path="/employees/:employeeId(\d+)" render={(props) => {
                         return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                     }} />
                     <Route path="/employees/new" render={(props) => {
                         return <EmployeeForm {...props}
-                            addEmployee={this.addEmployee}/>
+                            addEmployee={this.addEmployee} />
                     }} />
                     <Route exact path="/animals" render={(props) => {
                         return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
