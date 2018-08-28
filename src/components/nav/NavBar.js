@@ -8,7 +8,7 @@ class NavBar extends Component {
         return (
             <nav className="navbar navbar-light fixed-top light-blue flex-md-nowrap p-0 shadow">
                 <ul className="nav nav-pills">
-            <input type="search" ></input>
+                    <input type="search" className="searchbox" ></input>
                     <li className="nav-item">
                         <Link className="nav-link" to="/">Locations</Link>
                     </li>

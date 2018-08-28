@@ -16,16 +16,17 @@ export default class AnimalDetail extends Component {
             <section className="animal">
                 <div key={animal.id} className="card">
                     <div className="card-body">
-                        <h4 className="card-title">
-                            <img src={dog} className="icon--dog" />
+                        <h2 className="card-title">
+                            <img src={dog} className="icon--dog" alt = "dog" />
                             {animal.name}
-                            
-                        </h4>
-                        <h2 className="card-title">{animal.breed}</h2>
-                        <a href="#"
+
+
+                        </h2>
+                        <h4 className="card-title">{animal.breed}</h4>
+                        <button
                             onClick={() => this.props.deleteAnimal(animal.id)
                                             .then(() => this.props.history.push("/animals"))}
-                            className="card-link">Delete</a>
+                            className="card-link">Delete</button>
                     </div>
                 </div>
             </section>
