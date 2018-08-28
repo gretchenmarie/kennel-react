@@ -53,7 +53,13 @@ export default class EmployeeForm extends Component {
                                onChange={this.handleFieldChange}
                                id="phone" placeholder="phone" />
                     </div>
-
+                    <div className="form-group">
+                        <label htmlFor="hireDate">hire date</label>
+                        <input type="text" required="true"
+                               className="form-control"
+                               onChange={this.handleFieldChange}
+                               id="hireDate" placeholder="hireDate" />
+                    </div>
 
                     <button type="submit" onClick={this.constructNewEmployee} className="btn btn-primary">Submit</button>
                 </form>

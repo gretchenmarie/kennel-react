@@ -14,10 +14,10 @@ class OwnerList extends Component {
 
                                     {owner.name}
                                     <br></br>
-                                   
+
                                     <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
-                                    <a onClick={() => this.props.deleteOwner(owner.id)}
-                                        className="card-link">Delete</a>
+                                    <button onClick={() => this.props.deleteOwner(owner.id)}
+                                        className="card-link">Delete</button>
                                 </h5>
                             </div>
                         </div>

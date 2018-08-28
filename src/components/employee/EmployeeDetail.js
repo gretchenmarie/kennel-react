@@ -19,6 +19,7 @@ export default class EmployeeDetail extends Component {
                         <h4 className="card-title">
 
                             {employee.name}
+                            
                         </h4>
                         <h6 className="card-title">{employee.phone}</h6>
                         <h6 className="card-title">{employee.hire}</h6>
