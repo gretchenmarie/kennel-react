@@ -53,18 +53,17 @@ export default class Login extends Component {
                     required="" />
 
 
-               {this.handleSubmit}
-               <br></br>
-                    <label>
-                        Remember me
-                         <input
+                {this.handleSubmit}
+                <br></br>
+                <label>
+                    Remember me
+                         <input type="checkbox" id="thecheckbox"
+                        ref={this.input} />
+                </label>
 
-                            type="checkbox"
-                            ref={this.input} />
-                    </label>
                     <br></br>
-                    <input type="submit" value="Submit" />
-                </form>
+                <input type="submit" value="Submit" />
+            </form>
 
 
 
