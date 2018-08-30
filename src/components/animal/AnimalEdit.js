@@ -1,8 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import "./Animal.css"
-
-export default class AnimalEdit extends Component {
+export default class EditAnimal extends Component {
     // Set initial state
     state = {
         animalName: "",
@@ -20,44 +19,41 @@ export default class AnimalEdit extends Component {
         Local method for validation, creating animal object, and
         invoking the function reference passed from parent component
      */
-    editTheAnimal = evt => {
+    constructEditAnimal = evt => {
         evt.preventDefault()
-         {
             const animal = {
                 name: this.state.animalName,
-                breed: this.state.breed,
+                breed: this.state.breed            }
 
-            }
-
-            this.props.editAnimal(animal).then(() => this.props.history.find("/animals"))
+            // Create the employee and redirect user to employee list
+            this.props.editAnimal(animal).then(() => this.props.history.push("/animals"))
         }
-    }
 
-
-      render() {
-
-          return (
-              <React.Fragment>
-
-            <section className="editinganimals">
-                {
-                    this.props.animals.map(animal =>
-                        <div key={animal.id} className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">
-                                    {animal.name}
-                                    <Link className="nav-link" to={`/animals/${animal.id}`}>edit</Link>
-                                    <button onClick={() => this.props.editAnimal(animal.id)}
-                                        className="card-link">Edit Animal</button>
-                                </h5>
-
-                            </div>
-                        </div>
-                    )
-                }
-            </section>
-            </React.Fragment>
-
-
-          )}
-   };
+  render() {
+    return (
+      <form onSubmit={this.constructEditAnimal}>
+        <h1>Edit Animal</h1>
+        <label htmlFor="inputName">Animal Name</label>
+        <input
+          value={this.state.name}
+          onChange={this.handleFieldChange}
+          type="text"
+          id="animalName"
+          placeholder="Name"
+          required=""
+          autoFocus=""
+        />
+        <label htmlFor="inputBreed">Animal Breed</label>
+        <input
+          value={this.state.breed}
+          onChange={this.handleFieldChange}
+          type="text"
+          id="breed"
+          placeholder="Breed"
+          required=""
+        />
+        <button type="submit">Update</button>
+      </form>
+    );
+  }
+}

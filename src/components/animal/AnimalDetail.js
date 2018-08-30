@@ -22,7 +22,7 @@ export default class AnimalDetail extends Component {
                             <img src={dog} className="icon--dog" alt="dog" />
                             {animal.name}
                         </h2>
-                            <h2>{employee.name}</h2>
+                            <h3>employee:{employee.name}</h3>
                         <h4 className="card-title">{animal.breed}</h4>
                         <button
                             onClick={() => this.props.deleteAnimal(animal.id)

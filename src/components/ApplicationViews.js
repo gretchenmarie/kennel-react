@@ -48,7 +48,7 @@ export default class ApplicationViews extends Component {
         .then(animals => this.setState({
             animals: animals
         }))
-    editAnimal = animal => AnimalManager.post(animal)
+    editAnimal = animal => AnimalManager.edit(animal)
         .then(() => AnimalManager.getAll())
         .then(animals => this.setState({
             animals: animals
@@ -139,7 +139,7 @@ export default class ApplicationViews extends Component {
                             addAnimal={this.addAnimal}
                             employees={this.state.employees} />
                     }} />
-                    <Route path="/animals/:animalID(\d+)" render={(props) => {
+                    <Route path="/animals/:animalId(\d+)" render={(props) => {
                         return <AnimalEdit {...props}
                             animals={this.state.animals}
                             editAnimal={this.editAnimal}/>
