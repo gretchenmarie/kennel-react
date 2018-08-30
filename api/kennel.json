@@ -1,24 +1,28 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "Jessica Younker"
-    },
-    {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
-      "id": 3,
-      "name": "Zoe LeBlanc"
-    },
-    {
-      "id": 4,
-      "name": "Blaise Roberts"
-    },
-    {
       "id": 5,
-      "name": "robert Roberts"
+      "name": "Robert Roberts",
+      "phone": "555-555-5555",
+      "hire": "Hired January 2017"
+    },
+    {
+      "name": "Maxwell",
+      "phone": "555-555-5555",
+      "hireDate": "2018",
+      "id": 6
+    },
+    {
+      "name": "gretchen m nutter",
+      "phone": "6152024566",
+      "hireDate": "2018",
+      "id": 7
+    },
+    {
+      "name": "g",
+      "phone": "6152024566",
+      "hireDate": "2018",
+      "id": 8
     }
   ],
   "locations": [
@@ -35,24 +39,45 @@
   ],
   "animals": [
     {
-      "id": 1,
-      "name": "Doodles"
-    },
-    {
       "id": 2,
-      "name": "Jack"
-    },
-    {
-      "id": 3,
-      "name": "Angus"
-    },
-    {
-      "id": 4,
-      "name": "Henley"
+      "name": "rex",
+      "breed": "breed-yorkie",
+      "employee": 5
     },
     {
       "id": 6,
-      "name": "Checkers"
+      "name": "Checkers",
+      "breed": "breed-mixed ",
+      "employee": 6
+    },
+    {
+      "name": "m",
+      "breed": "dog",
+      "employeeId": 5,
+      "id": 7
+    },
+    {
+      "name": "cujo",
+      "breed": "dog",
+      "employeeId": 5,
+      "id": 8
+    }
+  ],
+  "owners": [
+    {
+      "id": 4,
+      "name": "Tracy Milam",
+      "phone": "555-555-5555"
+    },
+    {
+      "id": 5,
+      "name": "Andrew Nutter",
+      "phone": "555-555-5555"
+    },
+    {
+      "id": 6,
+      "name": "Wyatt Nutter",
+      "phone": "555-555-5555"
     }
   ]
 }

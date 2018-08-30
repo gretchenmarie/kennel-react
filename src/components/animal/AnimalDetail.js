@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./Animal.css"
 import dog from "./DogIcon.png"
-import EmployeeDetail from "../employee/EmployeeDetail";
+
 
 
 export default class AnimalDetail extends Component {
@@ -24,8 +24,6 @@ export default class AnimalDetail extends Component {
                         </h2>
                             <h2>{employee.name}</h2>
                         <h4 className="card-title">{animal.breed}</h4>
-
-
                         <button
                             onClick={() => this.props.deleteAnimal(animal.id)
                                 .then(() => this.props.history.push("/animals"))}

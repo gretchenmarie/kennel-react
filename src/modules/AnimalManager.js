@@ -25,5 +25,15 @@ post: {
         }).then(e => e.json())
     }
 },
-
+edit: {
+    value: function (editAnimal) {
+        return fetch(`${remoteURL}/animals`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editAnimal)
+        }).then(e => e.json())
+    }
+}
 })

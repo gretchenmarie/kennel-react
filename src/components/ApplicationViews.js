@@ -5,6 +5,7 @@ import AnimalDetail from './animal/AnimalDetail'
 import AnimalManager from '../modules/AnimalManager'
 import EmployeeForm from './employee/EmployeeForm'
 import AnimalForm from './animal/AnimalForm'
+import AnimalEdit from './animal/AnimalEdit'
 import EmployeeManager from '../modules/EmployeeManager'
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
@@ -43,6 +44,11 @@ export default class ApplicationViews extends Component {
 
     }
     addAnimal = animal => AnimalManager.post(animal)
+        .then(() => AnimalManager.getAll())
+        .then(animals => this.setState({
+            animals: animals
+        }))
+    editAnimal = animal => AnimalManager.post(animal)
         .then(() => AnimalManager.getAll())
         .then(animals => this.setState({
             animals: animals
@@ -117,29 +123,34 @@ export default class ApplicationViews extends Component {
                     }} />
                     <Route exact path="/animals" render={(props) => {
                         if (this.isAuthenticated()) {
-                        return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
-                    }else {
-                        return <Redirect to="/login" />
-                    }
-                }} />
+                            return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
                     <Route path="/animals/:animalId(\d+)" render={(props) => {
                         return <AnimalDetail {...props}
-                         deleteAnimal={this.deleteAnimal}
-                         animals={this.state.animals}
-                         employees={this.state.employees}/>
+                            deleteAnimal={this.deleteAnimal}
+                            animals={this.state.animals}
+                            employees={this.state.employees} />
                     }} />
                     <Route path="/animals/new" render={(props) => {
                         return <AnimalForm {...props}
                             addAnimal={this.addAnimal}
                             employees={this.state.employees} />
                     }} />
+                    <Route path="/animals/:animalID(\d+)" render={(props) => {
+                        return <AnimalEdit {...props}
+                            animals={this.state.animals}
+                            editAnimal={this.editAnimal}/>
+                    }} />
                     <Route exact path="/owners" render={(props) => {
-                        if (this.isAuthenticated()){
-                        return <OwnerList {...props}  deleteOwner={this.deleteOwner} owners={this.state.owners} />
-                    }else {
-                        return <Redirect to="/login" />
-                    }
-                }} />
+                        if (this.isAuthenticated()) {
+                            return <OwnerList {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
+                    }} />
                     <Route path="/owners/:ownerId(\d+)" render={(props) => {
                         return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
                     }} />

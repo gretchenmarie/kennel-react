@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./Animal.css"
 
+
 export default class AnimalForm extends Component {
     // Set initial state
     state = {
