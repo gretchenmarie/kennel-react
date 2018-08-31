@@ -32,7 +32,7 @@ export default class EditAnimal extends Component {
   render() {
     return (
       <form onSubmit={this.constructEditAnimal}>
-        <h1>Edit Animal</h1>
+        <h3>Edit Animal</h3>
         <label htmlFor="inputName">Animal Name</label>
         <input
           value={this.state.name}
@@ -43,6 +43,7 @@ export default class EditAnimal extends Component {
           required=""
           autoFocus=""
         />
+        <br/>
         <label htmlFor="inputBreed">Animal Breed</label>
         <input
           value={this.state.breed}
@@ -52,7 +53,8 @@ export default class EditAnimal extends Component {
           placeholder="Breed"
           required=""
         />
-        <button type="submit">Update</button>
+        <br/>
+        <button type="submit">Update animal</button>
       </form>
     );
   }

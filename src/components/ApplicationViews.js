@@ -103,9 +103,7 @@ export default class ApplicationViews extends Component {
                     <Route exact path="/" render={(props) => {
                         return <LocationList locations={this.state.locations} />
                     }} />
-                    {/*<Route exact path="/animals" render={(props) => {
-                        return <AnimalList animals={this.state.animals} />*/
-                    }
+                   
                     <Route exact path="/employees" render={props => {
                         if (this.isAuthenticated()) {
                             return <EmployeeList {...props}

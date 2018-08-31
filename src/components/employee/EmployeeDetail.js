@@ -21,8 +21,8 @@ export default class EmployeeDetail extends Component {
                             {employee.name}
 
                         </h4>
-                        <h6 className="card-title">{employee.phone}</h6>
-                        <h6 className="card-title">{employee.hire}</h6>
+                        <h6 className="card-title">phone:{employee.phone}</h6>
+                        <h6 className="card-title">hire date:{employee.hireDate}</h6>
                         <button
                             onClick={() => this.props.deleteEmployee(employee.id)
                                             .then(() => this.props.history.push("/employees"))}
